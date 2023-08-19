@@ -148,9 +148,9 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 LOGIN_REDIRECT_URL = 'users:dashboard'
-LOGOUT_REDIRECT_URL = ''
+# LOGOUT_REDIRECT_URL = ''
 LOGIN_URL = '/'
-LOGOUT_URL = 'logout'
+# LOGOUT_URL = ''
 
 # SOCIALACCOUNT_PROVIDERS = {
 #     "google": {

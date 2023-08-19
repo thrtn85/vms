@@ -18,12 +18,6 @@ def home(request):
     }
     return render(request, 'home.html', context=context)
 
-
-def logout_user(request):
-    logout(request)
-    messages.success(request,("You have been successfully logged out."))
-    return redirect('home')
-
 @login_required
 def dashboard(request):
     context = {
