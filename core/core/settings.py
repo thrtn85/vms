@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'bootstrap4',
     'users',
 ]
 
@@ -147,7 +148,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 LOGIN_REDIRECT_URL = 'users:dashboard'
-LOGIN_REDIRECT_URL = ''
+LOGOUT_REDIRECT_URL = ''
 LOGIN_URL = '/'
 LOGOUT_URL = 'logout'
 
