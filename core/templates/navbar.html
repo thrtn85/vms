@@ -1,0 +1,35 @@
+<!-- {% load socialaccount %} -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <a class="navbar-brand" href="/">Authentication <i class="fas fa-boxes"></i></a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+     </button>
+ 
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+ 
+         {% if request.user.is_authenticated %}
+         <ul class="navbar-nav mr-auto">
+
+             <li class="nav-item">
+                 <a class="nav-link" href="{% url 'users:dashboard' %}">Dashboard</a>
+             </li>
+         </ul>
+         {% endif %}
+         <span>
+             {% if request.user.is_authenticated %}
+             <a href="{% url 'users:logout' %}" class="btn btn-danger">Logout</a>
+             Hello
+             <i>{{user.first_name}}{{user.last_name}}</i>
+             {% else %}
+                <div class="login__left">
+                    <a href="/accounts/login/" class="btn btn-secondary">Log-in</a>
+                    <a href="/accounts/signup/" class="btn btn-info ">Register</a>
+
+                </div>
+ 
+             {% endif %}
+ 
+         </span>
+     </div>
+ </nav>
