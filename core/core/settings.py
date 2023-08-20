@@ -166,8 +166,11 @@ LOGIN_URL = '/'
 
 # allauth forgot pw
 # The user is required to hand over an e-mail address when signing up.
-ACCOUNT_EMAIL_REQUIRED = False 
+ACCOUNT_EMAIL_REQUIRED = True 
 #Determines the e-mail verification method during signup – choose one of "mandatory", "optional", or "none".
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 #SOCIALACCOUNT_EMAIL_VERIFICATION = ACCOUNT_EMAIL_VERIFICATION
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False

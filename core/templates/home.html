@@ -1,8 +1,17 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 {% block title %}Home{% endblock title %}
 {% block content %}
 
-<h1>Homepage</h1>
-<h3>Welcome. Please log in or register.</h3>
+{% if request.user.is_authenticated %}
+     <h1>Home</h1>
+     <p>You're logged in, {{user.first_name}} {{user.last_name}}.</p>
+{%else%}
+     <h1>Welcome. Please log in or register.</h1>
+     <div class="">
+          <a href="/accounts/login/" class="btn btn-secondary">Log-in</a>
+          <a href="/accounts/signup/" class="btn btn-info ">Register</a>
+      </div>
+{% endif %}
+
 
 {% endblock content %}

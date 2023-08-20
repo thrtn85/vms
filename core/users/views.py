@@ -6,10 +6,12 @@ from django.contrib.auth import logout
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from .forms import UserEditForm
+from allauth.account.views import LoginView
+from .forms import UserEditForm, CustomLoginForm
 
 
-# Create your views here.
+class CustomLoginView(LoginView):
+    form_class = CustomLoginForm
 
 
 def home(request):

@@ -1,8 +1,7 @@
 from django.contrib.auth.models import User
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UsernameField
+from allauth.account.forms import LoginForm
 from .models import UserProfile
-from django.contrib.auth.forms import PasswordResetForm
 
 
 
@@ -10,3 +9,11 @@ class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email')
+
+
+class CustomLoginForm(LoginForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        # Change the class attribute of the form itself
+        self.fields['login'].widget.attrs['class'] = 'form'
