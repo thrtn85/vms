@@ -8,6 +8,7 @@ defusedxml==0.7.1
 Django==4.2.4
 django-allauth==0.54.0
 django-bootstrap4==23.2
+django-environ==0.10.0
 idna==3.4
 oauthlib==3.2.2
 pycparser==2.21
