@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load account socialaccount%}
+
 {% block title %}Dashboard{% endblock title %}
 {% block content %}
 <h1>{{welcome}}</h1>
@@ -6,4 +8,9 @@
 <a href="{% url 'users:edit' %}" class="btn btn-primary">Edit Your Profile</a> or
 <a href="/accounts/password/change/" class="btn btn-warning">Change your password</a>
 <hr>
+
+<p>Username = {{ user.username }} </p>
+<p>Email = {{ user.email }}</p>
+
+
 {% endblock content %}

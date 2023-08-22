@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <h1>Email Address</h1>
+    {% if emailaddresses %}
+        {% if current_emailaddress %}
+            <p>
+               The following email address is associated with your account: <a href="mailto:{{ current_emailaddress.email }}">{{ current_emailaddress.email }}</a>
+            </p>
+        {% endif %}
+        {% if new_emailaddress %}
+            <p>
+               Your email address is still pending verification: <a href="mailto:{{ new_emailaddress.email }}">{{ new_emailaddress.email }}</a>
+            </p>
+            <form class="form" method="post" action="{% url 'account_email' %}">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <input type="hidden" name="email" value="{{ new_emailaddress.email }}">
+                <button class="btn btn-primary" type="submit" name="action_send">{% trans 'Re-send Verification' %}</button>
+            </form>
+        {% endif %}
+    {% else %}
+        {% include "account/snippets/warn_no_email.html" %}
+    {% endif %}
+    <h2>Change Email Address</h2>
+    <form class="form" method="post" action="{% url 'account_email' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" name="action_add" type="submit">Change Email</button>
+    </form>
+{% endblock %}

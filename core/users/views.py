@@ -7,21 +7,24 @@ from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from allauth.account.views import LoginView
-from .forms import UserEditForm, CustomLoginForm
+from .forms import UserEditForm
 
 
-class CustomLoginView(LoginView):
-    form_class = CustomLoginForm
 
 
 def home(request):
+    user = request.user # get current logged in user
+
     context = {
-        "welcome": "Welcome"
+        "welcome": "Welcome",
+        "user": user
     }
-    return render(request, 'home.html', context=context)
+    return render(request, 'home.html', context)
 
 @login_required
 def dashboard(request):
+
+
     context = {
         "welcome": "Welcome to your dashboard"
     }
