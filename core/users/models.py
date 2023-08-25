@@ -15,3 +15,6 @@ class Role(models.Model):
         ('ADMIN', 'Administrator'),
     ]
     role = models.CharField(max_length=20, choices=role_choices)
+
+    def __str__(self):
+        return self.role
