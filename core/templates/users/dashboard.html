@@ -5,7 +5,8 @@
 {% block content %}
 <h1>{{welcome}}</h1>
 <br>
-<a href="{% url 'users:edit' %}" class="btn btn-primary">Edit Your Profile</a> or
+<a href="{% url 'users:edit_account' %}" class="btn btn-primary">Edit Your Account</a>
+<a href="{% url 'users:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
 <a href="/accounts/password/change/" class="btn btn-warning">Change your password</a>
 <hr>
 
