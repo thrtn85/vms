@@ -50,11 +50,11 @@ def edit_profile(request):
             user_profile.user = request.user  # Ensure the user is associated
             user_profile.save()
             
-            selected_interests = form.cleaned_data.get('interests', [])
-            update_related_items(user_profile, 'interests', selected_interests)
+            # selected_interests = form.cleaned_data.get('interests', [])
+            # update_related_items(user_profile, 'interests', selected_interests)
 
-            selected_skills = form.cleaned_data.get('skills', [])
-            update_related_items(user_profile, 'skills', selected_skills)
+            # selected_skills = form.cleaned_data.get('skills', [])
+            # update_related_items(user_profile, 'skills', selected_skills)
 
 
             return redirect('/dashboard/')  # Redirect to the dashboard

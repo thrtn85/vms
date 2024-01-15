@@ -15,8 +15,8 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = '__all__'
-        #exclude = ['user',]
-        widgets = {
-            'skills': forms.CheckboxSelectMultiple(attrs={'class': 'list-unstyled'}),
-            'interests': forms.CheckboxSelectMultiple(attrs={'class': 'list-unstyled'}),
-        }
+        exclude = ['user',]
+        # widgets = {
+        #     'skills': forms.CheckboxSelectMultiple(attrs={'class': 'list-unstyled'}),
+        #     'interests': forms.CheckboxSelectMultiple(attrs={'class': 'list-unstyled'}),
+        # }
