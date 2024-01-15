@@ -7,14 +7,7 @@
      <h1>{{heading}}</h1>
 
      <!-- list users (name, email, status, last activity, actions) -->
-     {% for user in userlist %}
-          {{ user.username }}
-          {{ user.first_name }}
-          {{ user.last_name }}
-          {{ user.email }}
-          {{ user.is_active }}
-          {{ user.last_login }}
-     {% endfor %}
+     {% render_table object_list %}
 
 
 {% endblock content %}

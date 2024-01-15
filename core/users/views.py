@@ -1,13 +1,24 @@
-from django.urls import reverse_lazy
-from django.http import request
-from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import request
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
+from django.views.generic.list import ListView
 from .forms import AccountEditForm, UserProfileForm
 from .models import UserProfile
 from .utility import update_related_items
 
+
 User = get_user_model()
+
+
+class UserListView(LoginRequiredMixin, ListView):
+    template = 'users/user_mgmt.html'
+    #redirect_field_name = 'user_list'
+
+    def get_queryset(self):
+        return User.objects.all()
 
 def home(request):
     user = request.user # get current logged in user
@@ -69,15 +80,17 @@ def edit_profile(request):
     return render(request, 'users/edit_profile.html', context)
 
 
-@login_required
-def user_mgmt(request):
-    # list users (name, email, status, last activity, actions)
-    
-    userlist = User.objects.all()
-    print(userlist)
 
-    context = {
-        "heading": "User Management",
-        "userlist": userlist
-    }
-    return render(request, 'users/user_mgmt.html', context=context)
+
+# @login_required
+# def user_mgmt(request):
+#     # list users (name, email, status, last activity, actions)
+    
+#     userlist = User.objects.all()
+#     print(userlist)
+
+#     context = {
+#         "heading": "User Management",
+#         "userlist": userlist
+#     }
+#     return render(request, 'users/user_mgmt.html', context=context)
