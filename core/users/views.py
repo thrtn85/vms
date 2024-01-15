@@ -12,11 +12,11 @@ from .utility import update_related_items
 
 User = get_user_model()
 
-
+# 011524-not working; getting TemplateDoesNotExist exception
 class UserListView(LoginRequiredMixin, ListView):
     template = 'users/user_mgmt.html'
     #redirect_field_name = 'user_list'
-
+    
     def get_queryset(self):
         return User.objects.all()
 
