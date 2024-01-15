@@ -1,20 +1,20 @@
 from django.db import models
 from django.conf import settings
-from django.contrib.auth.models import User, Permission
+from django.contrib.auth.models import User
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    test = models.TextField()
-
-
-class Role(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    role_choices = [
-        ('VOLUNTEER', 'Volunteer'),
+    ROLES = [
+        ('NONE', 'None'),
+        ('MANAGER', 'Program Manager'),
         ('ADMIN', 'Administrator'),
     ]
-    role = models.CharField(max_length=20, choices=role_choices)
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    role = models.CharField(max_length=20, choices=ROLES, default='NONE')
 
     def __str__(self):
-        return self.role
+        return self.user.username
+    
+    class Meta:
+        verbose_name_plural = "User Profiles"

@@ -56,7 +56,6 @@ INSTALLED_APPS = [
 
     'users',
     'apps.volunteers',
-    'apps.opportunities',
 ]
 
 MIDDLEWARE = [
@@ -180,6 +179,21 @@ LOGIN_REDIRECT_URL = 'users:dashboard'
 LOGIN_URL = '/'
 # LOGOUT_URL = ''
 
+# Set Authentication Method To Email
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True # The user is required to hand over an e-mail address when signing up.
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # Determines the e-mail verification method during signup – choose one of "mandatory", "optional", or "none".
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1 # Sets the number of days within which an account should be activated
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5 # The maximum number of login attempts can be set, and the user gets blocked from logging back in until a timeout.
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 # 1 day in seconds
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS  = True
+ACCOUNT_UNIQUE_EMAIL = True
+
+# Social Auth Configuration
+#SOCIALACCOUNT_EMAIL_VERIFICATION = ACCOUNT_EMAIL_VERIFICATION
 # SOCIALACCOUNT_PROVIDERS = {
 #     "google": {
 #         "SCOPE": [
@@ -191,21 +205,4 @@ LOGIN_URL = '/'
 # }
 
 #SOCIALACCOUNT_LOGIN_ON_GET = True
-
-ACCOUNT_EMAIL_REQUIRED = True # The user is required to hand over an e-mail address when signing up.
-
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # Determines the e-mail verification method during signup – choose one of "mandatory", "optional", or "none".
-
-#SOCIALACCOUNT_EMAIL_VERIFICATION = ACCOUNT_EMAIL_VERIFICATION
-
-ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS=1 # Sets the number of days within which an account should be activated
-
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 # 1 day in seconds
-ACCOUNT_CONFIRM_EMAIL_ON_GET = True
-ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS  = True
-ACCOUNT_AUTHENTICATION_METHOD = "email"
-ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_USERNAME_REQUIRED = False
-
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5 # The maximum number of login attempts can be set, and the user gets blocked from logging back in until a timeout.
-
+ACCOUNT_ADAPTER = 'users.allauth_adapter.CustomAccountAdapter'

@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 
-{% block title %}Edit{% endblock title %}
+{% block title %}Edit Profile{% endblock title %}
 {% block content %}
-<h2>Edit your account</h2>
-<p>You can edit your account using the follow form</p>
-<form action="" method="post" class="form">
+
+<h2>Edit your profile</h2>
+<p>You can edit your profile using the follow form</p>
+{% if created %}
+    <p>Your profile has been created.</p>
+{% endif %}
+<form method="post" class="form" enctype="multipart/form-data">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
