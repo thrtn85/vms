@@ -3,13 +3,14 @@
 
 {% block title %}Dashboard{% endblock title %}
 {% block content %}
-<h1>{{welcome}}</h1>
-<br>
+<div class="">
+     <h1>{{welcome}}</h1>
+     <hr>
 
-{% include "includes/navuser.html" %}
+     <p>Username = {{ user.username }} </p>
+     <p>Email = {{ user.email }}</p>
+</div>
 
-<p>Username = {{ user.username }} </p>
-<p>Email = {{ user.email }}</p>
 
 
 {% endblock content %}

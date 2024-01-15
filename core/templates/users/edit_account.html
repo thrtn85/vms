@@ -3,15 +3,21 @@
 
 {% block title %}Edit Account{% endblock title %}
 {% block content %}
-
-<h2>Edit your account</h2>
+<div class="row">
+    
+    <h2>Edit your account</h2>
+</div>
 
 <p>You can edit your account using the follow form</p>
+
+<a href="/accounts/password/change/" class="btn btn-warning">Change your password</a>
+<hr/>
 
 <form action="" method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
+    <button onclick="history.back()" class="btn btn-warning">Cancel</button>
     <button type="submit" class="btn btn-primary">Submit</button>
     {% endbuttons %}
 </form>

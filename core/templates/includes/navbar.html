@@ -19,6 +19,10 @@
                  <a class="nav-link" href="/admin">Admin</a>
              </li>
              {% endif %}
+             <li class="nav-item">
+                <a class="nav-link" href="{% url 'users:edit_account' %}">Account</a>
+            </li>
+             
          </ul>
          {% endif %}
          <span>
@@ -26,11 +30,7 @@
              <a href="/accounts/logout/" class="btn btn-danger">Logout</a>
              Hello, 
              <i>{{user.first_name}}{{user.last_name}}</i>
-             {% else %}
-                
- 
              {% endif %}
- 
          </span>
      </div>
  </nav>

@@ -19,7 +19,7 @@ class CustomUserAdmin(admin.ModelAdmin):
      list_display = ('username', 'email', 'first_name', 'last_name', 'is_active')
      list_filter = ('is_active', 'date_joined',)
      search_fields = ('username', 'email', 'first_name', 'last_name')
-     readonly_fields = ('username','last_login','password')
+     readonly_fields = ('last_login',)
      inlines = [ProfileInline]
 
 admin.site.unregister(User)
