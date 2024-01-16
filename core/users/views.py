@@ -79,6 +79,7 @@ def user_mgmt(request):
     # list users (name, email, status, last activity, actions)
     
     table = UserTable(User.objects.all())
+    table.paginate(page=request.GET.get("page", 1), per_page=25)
 
     context = {
         "heading": "User Management",

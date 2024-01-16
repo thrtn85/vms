@@ -208,3 +208,5 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 #SOCIALACCOUNT_LOGIN_ON_GET = True
 ACCOUNT_ADAPTER = 'users.allauth_adapter.CustomAccountAdapter'
+
+DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap5.html"
