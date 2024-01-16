@@ -1,9 +1,15 @@
 from django.contrib import admin
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
 from .models import *
 #from allauth.account.models import EmailAddress
 from allauth.socialaccount.models import SocialApp, SocialAccount
 #from allauth.socialaccount.admin import SocialAppAdmin
+
+
+admin.site.login = staff_member_required(
+     admin.site.login, login_url=settings.LOGIN_URL
+)
 
 admin.site.unregister(SocialApp)
 admin.site.unregister(SocialAccount)
