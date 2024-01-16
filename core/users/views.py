@@ -7,18 +7,12 @@ from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from .forms import AccountEditForm, UserProfileForm
 from .models import UserProfile
+from .tables import UserTable
 from .utility import update_related_items
 
 
 User = get_user_model()
 
-# 011524-not working; getting TemplateDoesNotExist exception
-class UserListView(LoginRequiredMixin, ListView):
-    template = 'users/user_mgmt.html'
-    #redirect_field_name = 'user_list'
-    
-    def get_queryset(self):
-        return User.objects.all()
 
 def home(request):
     user = request.user # get current logged in user
@@ -80,17 +74,14 @@ def edit_profile(request):
     return render(request, 'users/edit_profile.html', context)
 
 
-
-
-# @login_required
-# def user_mgmt(request):
-#     # list users (name, email, status, last activity, actions)
+@login_required
+def user_mgmt(request):
+    # list users (name, email, status, last activity, actions)
     
-#     userlist = User.objects.all()
-#     print(userlist)
+    table = UserTable(User.objects.all())
 
-#     context = {
-#         "heading": "User Management",
-#         "userlist": userlist
-#     }
-#     return render(request, 'users/user_mgmt.html', context=context)
+    context = {
+        "heading": "User Management",
+        "table": table
+    }
+    return render(request, 'users/user_mgmt.html', context=context)

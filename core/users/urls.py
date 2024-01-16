@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import dashboard, home, edit_account, edit_profile, UserListView
+from .views import dashboard, home, edit_account, edit_profile, user_mgmt
 from django.urls import reverse_lazy
 
 
@@ -16,6 +16,5 @@ urlpatterns = [
     # edit profile
     path('edit-profile/', edit_profile, name='edit_profile'),
 
-    #path('user-mgmt/', user_mgmt, name='user_mgmt'),
-    path("user-mgmt/", UserListView.as_view())
+    path('user-mgmt/', user_mgmt, name='user_mgmt'),
 ]
