@@ -180,7 +180,7 @@ LOGIN_REDIRECT_URL = 'users:dashboard'
 # LOGOUT_REDIRECT_URL = ''
 LOGIN_URL = '/'
 # LOGOUT_URL = ''
-
+ACCOUNT_ADAPTER = 'users.allauth_adapter.CustomAccountAdapter'
 # Set Authentication Method To Email
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True # The user is required to hand over an e-mail address when signing up.
@@ -207,6 +207,6 @@ ACCOUNT_UNIQUE_EMAIL = True
 # }
 
 #SOCIALACCOUNT_LOGIN_ON_GET = True
-ACCOUNT_ADAPTER = 'users.allauth_adapter.CustomAccountAdapter'
+
 
 DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap5.html"

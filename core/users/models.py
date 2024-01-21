@@ -10,11 +10,12 @@ class UserProfile(models.Model):
         ('ADMIN', 'Administrator'),
     ]
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=True, related_name="profile", on_delete=models.CASCADE)
     role = models.CharField(max_length=20, choices=ROLES, default='NONE')
+
+    class Meta:
+        verbose_name = "User Profile"
+        verbose_name_plural = "User Profiles"
 
     def __str__(self):
         return self.user.username
-    
-    class Meta:
-        verbose_name_plural = "User Profiles"

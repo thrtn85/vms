@@ -23,6 +23,7 @@ def home(request):
     }
     return render(request, 'home.html', context)
 
+
 @login_required
 def dashboard(request):
 
