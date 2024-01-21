@@ -181,11 +181,13 @@ LOGIN_REDIRECT_URL = 'users:dashboard'
 LOGIN_URL = '/'
 # LOGOUT_URL = ''
 ACCOUNT_ADAPTER = 'users.allauth_adapter.CustomAccountAdapter'
+
 # Set Authentication Method To Email
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True # The user is required to hand over an e-mail address when signing up.
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "email"
+
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # Determines the e-mail verification method during signup – choose one of "mandatory", "optional", or "none".
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1 # Sets the number of days within which an account should be activated
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5 # The maximum number of login attempts can be set, and the user gets blocked from logging back in until a timeout.
